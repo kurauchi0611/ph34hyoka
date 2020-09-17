@@ -1,0 +1,21 @@
+.react-mde {
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+}
+.react-mde div:nth-child(2) {
+  height: 100%;
+}
+.mde-tabs {
+    display: none !important;
+}
+.grip {
+    display: none !important;
+}
+.mde-textarea-wrapper {
+    flex: 1 1 100%;
+    height: 100%;
+}
+.mde-textarea-wrapper .mde-text {
+    height: 100% !important;
+}
