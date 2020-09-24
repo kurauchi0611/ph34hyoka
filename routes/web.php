@@ -26,7 +26,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/drafts', function () {
     return Inertia\Inertia::render('Draft');
 })->name('drafts');
 
-
 Route::resource('/user', 'App\Http\Controllers\UserController');
 
 Route::get('profile', function () {
@@ -34,8 +33,5 @@ Route::get('profile', function () {
 });
 
 Route::get('post', 'App\Http\Controllers\PostsController@index');
-// Route::get('post/{id}',function(){
-//     return Inertia\Inertia::render('PostDetail');
-// });
 Route::get('post/{id}', 'App\Http\Controllers\PostsController@show');
 Route::get('category/{id}', 'App\Http\Controllers\PostsController@category');

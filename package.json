@@ -29,11 +29,13 @@
         "@material-ui/icons": "^4.9.1",
         "@material-ui/lab": "^4.0.0-alpha.56",
         "@types/react": "^16.9.49",
+        "date-fns": "^2.16.1",
         "markdown-to-jsx": "^7.0.0",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
         "react-markdown": "^4.3.1",
         "react-mde": "^11.0.0",
-        "react-syntax-highlighter": "^13.5.3"
+        "react-syntax-highlighter": "^13.5.3",
+        "recharts": "^1.8.5"
     }
 }

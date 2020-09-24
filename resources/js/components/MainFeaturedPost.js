@@ -57,7 +57,7 @@ export default function MainFeaturedPost(props) {
             <Typography variant="h5" color="inherit" paragraph>
               {"ここは倉内のブログ。適当なことを書いていくよ！！！"}
             </Typography>
-            <InertiaLink href="profile" className={classes.link}>
+            <InertiaLink href="/profile" className={classes.link}>
               <Link variant="subtitle1" component="p">
                 {post.linkText}
               </Link>

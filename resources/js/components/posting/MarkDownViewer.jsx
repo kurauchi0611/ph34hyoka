@@ -22,7 +22,10 @@ const useStyles = makeStyles(theme =>
             background: "#fff",
             width: "100%",
             overflowY: "auto",
-            wordBreak: "break-all"
+            wordBreak: "break-all",
+            "& img": {
+                maxWidth: "100%"
+            }
         },
         previewChar: {
             background: "#f9f9f9",

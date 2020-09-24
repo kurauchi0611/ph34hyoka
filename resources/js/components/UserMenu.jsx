@@ -61,7 +61,7 @@ const StyledMenuItem = withStyles(theme => ({
 export default function CustomizedMenus({ props }) {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
-    console.log("aaaa", props);
+    // console.log("aaaa", props);
     const handleClick = event => {
         setAnchorEl(event.currentTarget);
     };
@@ -95,7 +95,7 @@ export default function CustomizedMenus({ props }) {
             >
                 <StyledMenuItem>
                     <InertiaLink
-                        href="dashboard"
+                        href="/dashboard"
                         className={classes.menuButton}
                         onClick={handleClose}
                     >
@@ -107,7 +107,7 @@ export default function CustomizedMenus({ props }) {
                 </StyledMenuItem>
                 <StyledMenuItem>
                     <InertiaLink
-                        href="posting"
+                        href="/posting"
                         className={classes.menuButton}
                         onClick={handleClose}
                     >
@@ -119,7 +119,7 @@ export default function CustomizedMenus({ props }) {
                 </StyledMenuItem>
                 <StyledMenuItem>
                     <InertiaLink
-                        href="drafts"
+                        href="/drafts"
                         className={classes.menuButton}
                         onClick={handleClose}
                     >

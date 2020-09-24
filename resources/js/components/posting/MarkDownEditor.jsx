@@ -2,7 +2,7 @@ import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import React from "react";
 // import ReactMarkdown from "react-markdown";
 // import { CodeBlock } from "./codeBlock";
-import ReactMde from "react-mde";
+import ReactMde, { Suggestion, SaveImageHandler, Command } from "react-mde";
 
 const useStyles = makeStyles(theme => ({
     wrap: {
@@ -65,6 +65,48 @@ const useStyles = makeStyles(theme => ({
 
 export const MarkDownEditor = ({ handleChange, text }) => {
     const classes = useStyles();
+
+    const customCommand = {
+        name: "my-custom-command",
+        icon: () => (
+            <span role="img" aria-label="nice">
+                🤔
+            </span>
+        ),
+        execute: opts => {
+            opts.textApi.replaceSelection("NICE");
+        }
+    };
+
+    const save = async function*(data) {
+        // Promise that waits for "time" milliseconds
+        console.log(data);
+        const wait = function(time) {
+            return new Promise((a, r) => {
+                setTimeout(() => a(), time);
+            });
+        };
+        let binary = "";
+        const bytes = new Uint8Array(data);
+        const len = bytes.byteLength;
+        for (let i = 0; i < len; i++) {
+            binary += String.fromCharCode(bytes[i]);
+        }
+        // const base= btoa( binary );
+        // let base64String = btoa(
+        //     String.fromCharCode.apply(null, new Uint8Array(data))
+        // );
+        // Upload "data" to your server
+        // Use XMLHttpRequest.send to send a FormData object containing
+        // "data"
+        // Check this question: https://stackoverflow.com/questions/18055422/how-to-receive-php-image-data-over-copy-n-paste-javascript-with-xmlhttprequest
+        // console.log(await base);
+        // yields the URL that should be inserted in the markdown
+        yield `data:image/png;base64,${btoa(binary)}`;
+
+        // returns true meaning that the save was successful
+        return true;
+    };
     return (
         <div className={classes.wrap}>
             <div className={classes.inner}>
@@ -72,6 +114,9 @@ export const MarkDownEditor = ({ handleChange, text }) => {
                     className={classes.editing}
                     value={text}
                     onChange={handleChange}
+                    paste={{
+                        saveImage: save
+                    }}
                 />
             </div>
         </div>

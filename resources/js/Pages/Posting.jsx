@@ -16,10 +16,14 @@ import { MarkDownViewer } from "../components/posting/MarkDownViewer";
 import { SendButton } from "../components/posting/sendButton";
 // import { questionDB } from "../../firebase/questions";
 // import { useRouter } from "next/router";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import InputLabel from "@material-ui/core/InputLabel";
 import Alert from "@material-ui/lab/Alert";
 import Grid from "@material-ui/core/Grid";
 import Axios from "axios";
-import { Inertia } from '@inertiajs/inertia'
+import { Inertia } from "@inertiajs/inertia";
+import { Category } from "@material-ui/icons";
 
 const useStyles = makeStyles(theme =>
     createStyles({
@@ -71,10 +75,10 @@ const useStyles = makeStyles(theme =>
 );
 
 const Index = ({ props }) => {
+  console.log("unkooooooooooo",props);
     const classes = useStyles();
     // const router = useRouter();
-    const sampleMoji =
-        `# 今日の倉内\nこんにちはみなさん。お元気ですか？\n私は元気です。\n<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>\n<p style="color:#ff8600;font-weight:bold;font-size:30px">それではまた明日。</p>`;
+    const sampleMoji = `# 今日の倉内\nこんにちはみなさん。お元気ですか？\n私は元気です。\n<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>\n<p style="color:#ff8600;font-weight:bold;font-size:30px">それではまた明日。</p>`;
 
     const [error, setError] = React.useState();
     const [open, setOpen] = React.useState(false);
@@ -83,9 +87,35 @@ const Index = ({ props }) => {
         // tags: [],
         description: sampleMoji,
         isPost: 0,
-        id_Category:2
+        id_Category: ""
         // userData: props
     });
+    const category = [
+        {
+            id: 1,
+            name: "日記"
+        },
+        {
+            id: 2,
+            name: "プログラミング"
+        },
+        {
+            id: 3,
+            name: "趣味"
+        },
+        {
+            id: 4,
+            name: "モンスター"
+        },
+        {
+            id: 5,
+            name: "学校"
+        },
+        {
+            id: 6,
+            name: "Javascript"
+        }
+    ];
     const handleClose = () => {
         setOpen(false);
     };
@@ -96,17 +126,13 @@ const Index = ({ props }) => {
                 ...state,
                 [name]: event
             });
-        } else if (name === "tags") {
-            const tagsArray = [];
-            event.forEach(item => {
-                tagsArray.push(item.lang);
-            });
+        }  else if (name === "id_Category") {
+          console.log(event);
             setState({
                 ...state,
-                [name]: tagsArray
+                [name]: event.target.value
             });
-            console.log(tagsArray);
-        } else if (name === "isPost") {
+        }  else if (name === "isPost") {
             setState({
                 ...state,
                 [name]: event
@@ -118,16 +144,16 @@ const Index = ({ props }) => {
             });
         }
     };
-    const post=()=>{
-      console.log(state);
-      Inertia.post("api/store", state, {
-        replace: true,
-        preserveState: true,
-        preserveScroll: false,
-        only: [],
-        headers: {},
-      })
-    }
+    const post = () => {
+        console.log(state);
+        Inertia.post("api/store", state, {
+            replace: true,
+            preserveState: true,
+            preserveScroll: false,
+            only: [],
+            headers: {}
+        });
+    };
     return (
         <React.Fragment>
             <CssBaseline />
@@ -148,6 +174,33 @@ const Index = ({ props }) => {
                                 variant="outlined"
                                 value={state.title}
                             />
+                            <FormControl
+                                variant="outlined"
+                                className={classes.formControl}
+                            >
+                                <InputLabel htmlFor="outlined-category-native-simple">
+                                    カテゴリー
+                                </InputLabel>
+                                <Select
+                                    native
+                                    value={state.id_Category}
+                                    onChange={handleChange("id_Category")}
+                                    label="カテゴリー"
+                                    inputProps={{
+                                        name: "カデゴリー",
+                                        id: "outlined-category-native-simple"
+                                    }}
+                                >
+                                    <option aria-label="None" value="" />
+                                    {category.map(elm => {
+                                        return (
+                                            <option value={elm.id}>
+                                                {elm.name}
+                                            </option>
+                                        );
+                                    })}
+                                </Select>
+                            </FormControl>
                             {/* <Tags handleChange={handleChange("tags")} tags={state.tags} /> */}
                             <Box mt={2} className={classes.setFlex}>
                                 <MarkDownEditor

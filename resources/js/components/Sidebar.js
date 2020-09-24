@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Sidebar(props) {
   const classes = useStyles();
   const { archives, description, social, title } = props;
-  console.log(props);
+  // console.log(props);
   return (
     <Grid item xs={12} md={4}>
       <Paper elevation={0} className={classes.sidebarAboutBox}>
@@ -38,7 +38,7 @@ export default function Sidebar(props) {
         カテゴリー
       </Typography>
       {archives.map((archive) => (
-        <InertiaLink href={`category/${archive.id}`} className={classes.link} key={archive.id}>
+        <InertiaLink href={`/category/${archive.id}`} className={classes.link} key={archive.id}>
           <Link display="block" variant="body1" component="p" >
             {archive.name}
           </Link>

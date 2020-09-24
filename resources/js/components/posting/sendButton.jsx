@@ -46,7 +46,7 @@ export const SendButton = ({ handleChange, selectedIndex, onClick, label }) => {
         handleChange(index);
         setOpen(false);
         if (false) {
-            console.log(event);
+            // console.log(event);
         }
     };
 

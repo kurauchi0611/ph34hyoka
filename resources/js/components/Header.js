@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Header(props) {
   const classes = useStyles();
   const { sections, title, user } = props;
-  console.log(props);
+  // console.log(props);
   return (
     <React.Fragment>
       <Toolbar className={classes.toolbar}>

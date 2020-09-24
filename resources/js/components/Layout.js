@@ -27,15 +27,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const sections = [
-  { title: 'プロフィール', url: 'profile' },
-  { title: '記事', url: 'post' },
+  { title: 'プロフィール', url: '/profile' },
+  { title: '記事', url: '/post' },
   { title: 'なんか1', url: '#' },
   { title: 'なんか2', url: '#' },
   { title: 'なんか3', url: '#' },
   { title: 'なんか4', url: '#' },
   { title: 'なんか5', url: '#' },
   { title: 'なんか6', url: '#' },
-  { title: 'お問い合わせ', url: 'contact' },
+  { title: 'お問い合わせ', url: '/contact' },
 ];
 
 const mainFeaturedPost = {
@@ -71,7 +71,7 @@ const featuredPosts = [
 const sidebar = {
   title: '自己紹介',
   description:
-    `こんにちは \n 🎉元気です！🎉`,
+    `こんにちは \n 🎉足立国家万歳！🎉`,
   archives: [
     { title: 'March 2020', url: '#' },
     { title: 'February 2020', url: '#' },
